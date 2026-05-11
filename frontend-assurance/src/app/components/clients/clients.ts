@@ -13,15 +13,17 @@ export class Clients implements OnInit {
   public clients: any;
 
   constructor(private assuranceService: Assurance) {}
-
   ngOnInit(): void {
+    // AJOUTE CETTE LIGNE :
+    console.log("🚨 1. ngOnInit est bien lancé !");
+
     this.assuranceService.getClients().subscribe({
       next: (data) => {
-        console.log(data);
+        console.log("✅ 2. Données reçues :", data);
         this.clients = data;
       },
       error: (err) => {
-        console.error("Erreur lors de la récupération des clients", err);
+        console.error("❌ 3. Erreur :", err);
       }
     });
   }
